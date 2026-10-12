@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>박은서의 개인 웹사이트</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f3f7ff;
+      --grid: #d6e2fa;
+      --ink: #1d2a5b;
+      --ink-soft: #4b5788;
+      --marker: #ffe45c;
+      --coral: #ff8a9b;
+      --mint: #b8f0d8;
+      --card: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body {
+      font-family: "Gowun Dodum", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      color: var(--ink);
+      background-color: var(--paper);
+      background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 28px 28px;
+      line-height: 1.8;
+      font-size: 17px;
+    }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; border-radius: 6px; }
+
+    /* 헤더 */
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(243, 247, 255, 0.92);
+      backdrop-filter: blur(6px);
+      border-bottom: 2px solid var(--ink);
+    }
+    .bar {
+      max-width: 1040px; margin: 0 auto; padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .logo { font-family: "Jua", sans-serif; font-size: 22px; text-decoration: none; }
+    nav { display: flex; gap: 8px; }
+    nav a {
+      text-decoration: none; padding: 4px 14px; border-radius: 999px;
+      border: 2px solid transparent; font-size: 16px;
+    }
+    nav a:hover { border-color: var(--ink); background: var(--marker); }
+
+    main { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+    /* 소개 */
+    .hero {
+      display: grid; grid-template-columns: 1.25fr 1fr; gap: 56px;
+      align-items: center; padding: 88px 0 96px;
+    }
+    .hero h1 {
+      font-family: "Jua", sans-serif; font-weight: 400;
+      font-size: clamp(38px, 6vw, 64px); line-height: 1.25; margin-bottom: 24px;
+    }
+    .hero h1 span {
+      background: linear-gradient(transparent 58%, var(--marker) 58%);
+      padding: 0 6px;
+    }
+    .hero p { max-width: 30em; color: var(--ink-soft); margin-bottom: 14px; }
+    .hero p strong { color: var(--ink); }
+    .links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .btn {
+      display: inline-block; text-decoration: none; padding: 10px 20px;
+      border: 2px solid var(--ink); border-radius: 12px; background: var(--card);
+      box-shadow: 4px 4px 0 var(--ink); transition: transform .12s, box-shadow .12s;
+    }
+    .btn:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); }
+    .btn.primary { background: var(--coral); }
+
+    /* 학생증 카드 */
+    .idcard {
+      background: var(--card); border: 2px solid var(--ink); border-radius: 18px;
+      box-shadow: 8px 8px 0 var(--ink); transform: rotate(2.5deg); overflow: hidden;
+    }
+    .idcard-top {
+      background: var(--mint); border-bottom: 2px solid var(--ink);
+      padding: 14px 22px; font-family: "Jua", sans-serif; font-size: 19px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .idcard-body { padding: 22px; display: grid; gap: 14px; }
+    .idcard dl { display: grid; grid-template-columns: 64px 1fr; row-gap: 10px; }
+    .idcard dt { color: var(--ink-soft); font-size: 15px; }
+    .idcard dd { font-size: 17px; }
+    .name { font-family: "Jua", sans-serif; font-size: 30px; line-height: 1.2; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 6px; }
+    .chips li {
+      list-style: none; font-size: 14px; padding: 2px 12px;
+      border: 2px solid var(--ink); border-radius: 999px; background: var(--paper);
+    }
+
+    /* 작업물 */
+    .section-title {
+      font-family: "Jua", sans-serif; font-weight: 400; font-size: 36px; margin-bottom: 8px;
+    }
+    .section-sub { color: var(--ink-soft); margin-bottom: 44px; }
+    .notes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; padding-bottom: 110px; }
+    .note {
+      position: relative; padding: 38px 28px 28px; border: 2px solid var(--ink);
+      border-radius: 6px 6px 22px 6px; box-shadow: 6px 6px 0 var(--ink);
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .note:nth-child(1) { background: var(--marker); transform: rotate(-1.5deg); }
+    .note:nth-child(2) { background: #ffc9d1; transform: rotate(1.2deg); margin-top: 28px; }
+    .note::before {
+      content: ""; position: absolute; top: -14px; left: 50%; width: 84px; height: 26px;
+      transform: translateX(-50%) rotate(-3deg);
+      background: rgba(255, 255, 255, 0.75); border: 2px solid var(--ink);
+    }
+    .note h3 { font-family: "Jua", sans-serif; font-weight: 400; font-size: 25px; line-height: 1.35; }
+    .note p { flex: 1; }
+    .note a {
+      align-self: flex-start; text-decoration: none; background: var(--card);
+      padding: 6px 16px; border: 2px solid var(--ink); border-radius: 999px;
+    }
+    .note a:hover { background: var(--ink); color: var(--card); }
+
+    footer { border-top: 2px solid var(--ink); background: var(--card); }
+    footer p { max-width: 1040px; margin: 0 auto; padding: 22px 24px; font-size: 15px; color: var(--ink-soft); }
+
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; gap: 48px; padding: 56px 0 72px; }
+      .idcard { transform: rotate(1deg); }
+      .notes { grid-template-columns: 1fr; }
+      .note:nth-child(2) { margin-top: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .btn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="bar">
+      <a class="logo" href="#about">은서's Space</a>
+      <nav aria-label="주요 메뉴">
+        <a href="#about">소개</a>
+        <a href="#projects">작업물</a>
+        <!-- 본인 GitHub 주소로 바꿔주세요 -->
+        <a href="https://github.com/your-github-id" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="about">
+      <div>
+        <h1>안녕하세요!<br>국민대 동기 여러분,<br><span>박은서</span>예요</h1>
+        <p>수업을 들으며 나만의 웹사이트 제작에 도전하고 있는 1학년 박은서입니다.</p>
+        <p>요즘은 <strong>GitHub</strong>로 HTML 웹사이트를 직접 만들고 배포하는 방법을 차근차근 배우고 있어요.</p>
+        <div class="links">
+          <!-- 이메일 주소를 바꿔주세요 -->
+          <a class="btn primary" href="mailto:your-email@example.com">이메일 보내기</a>
+          <!-- 본인 GitHub 주소로 바꿔주세요 -->
+          <a class="btn" href="https://github.com/your-github-id" target="_blank" rel="noopener">GitHub 프로필 보기</a>
+        </div>
+      </div>
+
+      <aside class="idcard" aria-label="프로필 카드">
+        <div class="idcard-top"><span>국민대학교</span><span>1학년</span></div>
+        <div class="idcard-body">
+          <p class="name">박은서</p>
+          <dl>
+            <dt>학번</dt><dd>2026XXXX</dd>
+            <dt>학교</dt><dd>국민대학교</dd>
+            <dt>학년</dt><dd>1학년</dd>
+          </dl>
+          <ul class="chips">
+            <li>HTML/CSS</li>
+            <li>GitHub Pages 배포 배우는 중</li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+    <section id="projects">
+      <h2 class="section-title">My Projects</h2>
+      <p class="section-sub">지금까지 만든 작업물이에요.</p>
+
+      <div class="notes">
+        <article class="note">
+          <h3>내 개인 사이트 만들기</h3>
+          <p>수업을 들으며 만들고 있는 저의 첫 번째 포털 사이트입니다. 새로운 기능과 작업물을 계속 업데이트할 예정이에요!</p>
+          <a href="#about">현재 보고 계신 페이지</a>
+        </article>
+
+        <article class="note">
+          <h3>슈팅게임 (Galaga)</h3>
+          <p>HTML5와 JavaScript로 만든 추억의 아케이드 갤러그 게임입니다. 심심할 때 직접 플레이해 보세요!</p>
+          <!-- 게임 배포 주소로 바꿔주세요 -->
+          <a href="https://your-github-id.github.io/galaga/" target="_blank" rel="noopener">게임 플레이하기</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 박은서. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
